@@ -1,0 +1,6 @@
+{
+    // Support using flow through your node_modules folder, WARNING: Checking this box is a security risk. When you open a project we will immediately run code contained within it.
+    "flow.useNPMPackagedFlow": true,
+    // Enable/disable JavaScript validation. (For Flow)
+    "javascript.validate.enable": false
+}
