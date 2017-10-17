@@ -3,7 +3,7 @@ import React from 'react'
 import { View, Text } from 'react-native'
 
 import { CheckButton, BackButton } from './'
-import colors from '../colors'
+import colors from './colors'
 
 export default ({ title, onClose, onCheck }) => {
     return (

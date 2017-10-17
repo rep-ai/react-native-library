@@ -11,7 +11,7 @@ import {
 } from 'react-native'
 
 import Icon from 'react-native-vector-icons/Ionicons'
-import colors from '../colors'
+import colors from './colors'
 
 class PlayButton extends PureComponent {
     props: {

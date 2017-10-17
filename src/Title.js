@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react'
 import { Text, StyleSheet } from 'react-native'
-import colors from '../colors'
+import colors from './colors'
 
 import { capitalize } from './'
 

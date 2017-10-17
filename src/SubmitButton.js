@@ -12,7 +12,7 @@ import {
 
 import PT from 'prop-types'
 
-import colors from '../colors'
+import colors from './colors'
 
 export default class SubmitButton extends Component {
     static propTypes = {

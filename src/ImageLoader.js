@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { View, StyleSheet, ActivityIndicator, Image, Platform } from 'react-native'
 import ImageProgress from 'react-native-image-progress'
 import ProgressBar from 'react-native-progress/Bar'
-import colors from '../colors'
+import colors from './colors'
 export type ResizeMode = 'cover' | 'contain' | 'stretch' | 'repeat' | 'center'
 import { mergeStyles } from './'
 

@@ -10,7 +10,7 @@ import {
     TouchableWithoutFeedback,
 } from 'react-native'
 
-import colors from '../../colors'
+import colors from '../colors'
 import styles from './styles'
 
 export default class HorizontalTab extends Component {

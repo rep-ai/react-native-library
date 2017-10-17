@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 
 import Text from '../Text'
-import colors from '../../colors'
+import colors from '../colors'
 
 import type { Style } from '../util/flowTypes'
 import { mergeStyles } from './'

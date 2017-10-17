@@ -2,8 +2,8 @@
 import React, { Component } from 'react'
 import { Image, View, ActivityIndicator } from 'react-native'
 
-import colors from '../colors'
-import styles from '../styles'
+import colors from './colors'
+import styles from './styles'
 
 class AvatarView extends Component {
     static defaultProps = {

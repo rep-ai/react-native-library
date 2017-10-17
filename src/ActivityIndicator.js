@@ -1,8 +1,8 @@
 // @flow
 import React, { PureComponent } from 'react'
 import { View, Platform, ActivityIndicator } from 'react-native'
-import styles from '../styles'
-import colors from '../colors'
+import styles from './styles'
+import colors from './colors'
 import * as Progress from 'react-native-progress'
 
 export default class ActivityIndicatorComponent extends PureComponent {

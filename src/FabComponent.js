@@ -8,8 +8,8 @@ import {
     View,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import colors from '../colors'
-import styles from '../styles'
+import colors from './colors'
+import styles from './styles'
 
 export default class FabComponent extends Component {
     state = {

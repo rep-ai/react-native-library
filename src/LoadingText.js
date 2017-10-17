@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import ProgressBar from 'react-native-progress/Bar'
 
-import colors from '../colors'
+import colors from './colors'
 
 export default class LoadingText extends Component {
     static defaultProps = {
