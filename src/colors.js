@@ -14,12 +14,4 @@ const colors: {
     facebookBlue: '#415DAE'
 }
 
-import theme from '../theme'
-if (theme === 'ActiveMatch') {
-    colors.main = '#9780af'
-}
-
-if (theme === 'Simpsons') {
-    colors.main = '#FFD90F'
-}
 export default colors
