@@ -68,7 +68,7 @@ class ImageLoader extends Component {
                     <Image
                         style={mergeStyles( styles.imageLoader, style )}
                         source={!source && !uri
-                            ? require('../images/baseball-pitch.jpg') : source || { uri }}
+                            ? require('./images/baseball-pitch.jpg') : source || { uri }}
                         onLoadStart={() => {
                             if (!source && !uri) {
                                 return null
@@ -107,7 +107,7 @@ class ImageLoader extends Component {
                     style
                 )}
                 source={!source && !uri
-                    ? require('../images/baseball-pitch.jpg') : source || { uri }}
+                    ? require('./images/baseball-pitch.jpg') : source || { uri }}
                 indicator={ProgressBar}
                 resizeMode={resizeMode}
                 onLoad={onLoad}

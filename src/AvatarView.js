@@ -79,9 +79,9 @@ class AvatarView extends Component {
                     source={
                         (this.props.avatar && this.props.avatar.uri)
                         ? this.props.avatar
-                        : require('./../images/avatarPlaceholder.png')
+                        : require('./images/avatarPlaceholder.png')
                     }
-                    defaultSource={require('./../images/avatarPlaceholder.png')}
+                    defaultSource={require('./images/avatarPlaceholder.png')}
                     resizeMode="cover"
                     onLoadStart={this.handleLoadStart}
                     onLoadEnd={this.handleLoadEnd}
