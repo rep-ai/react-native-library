@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Text } from 'react-native'
 
-import { mergeStyles } from './'
+import mergeStyles from './UtilityMethods/mergeStyles'
 
 export type TextAdjustsToFitProps = {
         ellipsizeMode: void,

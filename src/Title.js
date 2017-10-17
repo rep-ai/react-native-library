@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Text, StyleSheet } from 'react-native'
 import colors from './colors'
 
-import { capitalize } from './'
+import capitalize from './UtilityMethods/capitalize'
 
 class Title extends Component {
     static defaultProps = {

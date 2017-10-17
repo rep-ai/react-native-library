@@ -5,7 +5,7 @@ import ImageProgress from 'react-native-image-progress'
 import ProgressBar from 'react-native-progress/Bar'
 import colors from './colors'
 export type ResizeMode = 'cover' | 'contain' | 'stretch' | 'repeat' | 'center'
-import { mergeStyles } from './'
+import mergeStyles from './UtilityMethods/mergeStyles'
 
 class ImageLoader extends Component {
     static defaultProps = {

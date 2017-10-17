@@ -2,7 +2,7 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-import { CheckButton, BackButton } from './'
+import { _CheckButton, _BackButton } from './HeaderButtons'
 import colors from './colors'
 
 export default ({ title, onClose, onCheck }) => {
@@ -15,7 +15,7 @@ export default ({ title, onClose, onCheck }) => {
             backgroundColor: colors.main,
             flexDirection: 'row'
         }}>
-            {onClose && <BackButton 
+            {onClose && <_BackButton 
                 onPress={onClose}
                 style={{position: 'absolute', left: 10, backgroundColor: 'transparent'}}
             />}
@@ -25,7 +25,7 @@ export default ({ title, onClose, onCheck }) => {
                 fontSize: 18,
                 marginBottom: -15
             }}>{title}</Text>
-            {onCheck && <CheckButton 
+            {onCheck && <_CheckButton 
                 onPress={onCheck}
                 style={{position: 'absolute', right: 10, backgroundColor: 'transparent'}}
             />}
