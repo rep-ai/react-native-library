@@ -11,7 +11,7 @@ import Text from '../Text'
 import colors from '../colors'
 
 import type { Style } from '../util/flowTypes'
-import mergeStyles from '../UtilityMethods/mergeStyles'
+import { mergeStyles } from '../util'
 
 // https://material.io/guidelines/style/writing.html#writing-language
 const defaultTitles = [ 'Sure', 'OK', 'Got it' ]
