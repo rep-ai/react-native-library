@@ -44,13 +44,15 @@ class OnboardingScreen extends Component {
                 visible={visible}
                 onRequestClose={() => this.setState({visible: false})}>
                 <View style={styles.innerContainer}>
-                    <Image
-                        resizeMode={'contain'}
-                        source={iconSource}
-                        defaultSource={iconSource}
-                        style={styles.headerImageContainer}
-                    />
-
+                    {iconSource && 
+                        <Image
+                            resizeMode={'contain'}
+                            source={iconSource}
+                            defaultSource={iconSource}
+                            style={styles.headerImageContainer}
+                        />
+                    }
+                    
                     <Text style={styles.title}>{title}</Text>
                     <Text style={styles.description}>{description}</Text>
 
