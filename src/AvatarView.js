@@ -87,7 +87,7 @@ class AvatarView extends Component {
                     onLoadEnd={this.handleLoadEnd}
                     onError={this.handleError}
                 />
-                {this.state.loading && (
+                {!!this.state.loading && (
                     <ActivityIndicator
                         style={[styles.absoluteFill, circleStyle, {
                             backgroundColor: colors.middleGrey,

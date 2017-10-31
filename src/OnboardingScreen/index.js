@@ -44,7 +44,7 @@ class OnboardingScreen extends Component {
                 visible={visible}
                 onRequestClose={() => this.setState({visible: false})}>
                 <View style={styles.innerContainer}>
-                    {iconSource && 
+                    {!!iconSource && 
                         <Image
                             resizeMode={'contain'}
                             source={iconSource}
@@ -56,7 +56,7 @@ class OnboardingScreen extends Component {
                     <Text style={styles.title}>{title}</Text>
                     <Text style={styles.description}>{description}</Text>
 
-                    {imageSource && (
+                    {!!imageSource && (
                         <Image
                             resizeMode={'contain'}
                             source={imageSource}
@@ -71,10 +71,10 @@ class OnboardingScreen extends Component {
                             onPress={onClose}
                         />
 
-                        {secondButtonOnPress && (
+                        {!!secondButtonOnPress && (
                             <View style={{width: 8}}/>
                         )}
-                        {secondButtonOnPress && (
+                        {!!secondButtonOnPress && (
                             <Button
                                 style={styles.flex}
                                 title={secondButtonText}

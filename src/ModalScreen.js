@@ -146,7 +146,7 @@ class ModalScreen extends Component {
                 <Animated.View style={[styles.positionAbsolute, {
                     transform: [{ translateY: this.state.translateY }]
                 }]}>
-                    {touchingBackgroundShouldHide && (
+                    {!!touchingBackgroundShouldHide && (
                         <TouchableWithoutFeedback onPress={this.hide}>
                             <View style={styles.positionAbsolute} />
                         </TouchableWithoutFeedback>

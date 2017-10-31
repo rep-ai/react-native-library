@@ -84,7 +84,7 @@ class ImageLoader extends Component {
                         onLoad={onLoad}
                         onError={this.handleError}
                     />
-                    {this.state.loading && (
+                    {!!this.state.loading && (
                         <View style={mergeStyles(styles.loadView, style,
                             {marginRight: 0, margin: 0},
                         )}>

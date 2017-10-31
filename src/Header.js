@@ -15,7 +15,7 @@ export default ({ title, onClose, onCheck }) => {
             backgroundColor: colors.main,
             flexDirection: 'row'
         }}>
-            {onClose && <_BackButton 
+            {!!onClose && <_BackButton 
                 onPress={onClose}
                 style={{position: 'absolute', left: 10, backgroundColor: 'transparent'}}
             />}
@@ -25,7 +25,7 @@ export default ({ title, onClose, onCheck }) => {
                 fontSize: 18,
                 marginBottom: -15
             }}>{title}</Text>
-            {onCheck && <_CheckButton 
+            {!!onCheck && <_CheckButton 
                 onPress={onCheck}
                 style={{position: 'absolute', right: 10, backgroundColor: 'transparent'}}
             />}
