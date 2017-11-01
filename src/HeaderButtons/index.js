@@ -18,7 +18,7 @@ const statusBarHeight = (Platform.OS === 'android' ? 24 : 20)
 const paddingRight = (statusBarHeight / 2) + 4
 const iconPlatform = Platform.OS === 'android' ? 'md' : 'ios'
 
-export const _HeaderButtonOptions = ({onPress}) => (
+export const _HeaderButtonOptions = ({ onPress, color = 'white' }) => (
     <TouchableOpacity
         style={{
             alignItems: 'center',
@@ -28,7 +28,7 @@ export const _HeaderButtonOptions = ({onPress}) => (
         <Icon
             name={`${iconPlatform}-more`}
             size={(Platform.OS === 'android' ? 24 : 32)}
-            color={'white'}
+            color={color}
         />
     </TouchableOpacity>
 )
