@@ -15,6 +15,9 @@ export const NumberInputView = _NumberInputView
 import _OnboardingScreen from './src/OnboardingScreen'
 export const OnboardingScreen = _OnboardingScreen
 
+import _Tooltip from './src/Tooltip'
+export const Tooltip = _Tooltip
+
 // Individual Components
 import _ActivityIndicator from './src/ActivityIndicator'
 export const ActivityIndicator = _ActivityIndicator
