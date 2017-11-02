@@ -11,9 +11,7 @@ export default StyleSheet.create({
         ...elevationToShadowProps(elevation),
         backgroundColor: 'white',
         borderRadius: 8,
-        paddingHorizontal: 24,
-        paddingBottom: 24,
-        paddingTop: 24,
+        padding: 36,
         alignItems: 'center',
         justifyContent: 'center',
         maxHeight: '70%',
@@ -25,21 +23,20 @@ export default StyleSheet.create({
     },
 
     title: {
-        fontSize: 26,
+        fontSize: 32,
         textAlign: 'center',
-        marginVertical: 12,
-        color: '#5D5D5D',
+        marginBottom: 12,
+        color: '#333',
     },
 
     description: {
-        fontSize: 17,
+        fontSize: 21,
         textAlign: 'center',
-        marginHorizontal: 12,
-        marginBottom: 16,
-        color: '#797979'
+        color: '#555',
     },
 
     top: {
+        top: 1,
         width: 20,
         height: 20,
         backgroundColor: 'transparent',
@@ -55,6 +52,7 @@ export default StyleSheet.create({
     },
 
     bottom: {
+        top: -1,
         width: 20,
         height: 20,
         backgroundColor: 'transparent',
@@ -70,6 +68,7 @@ export default StyleSheet.create({
     },
 
     left: {
+        left: 1,
         width: 20,
         height: 20,
         backgroundColor: 'transparent',
@@ -85,6 +84,7 @@ export default StyleSheet.create({
     },
 
     right: {
+        left: -1,
         width: 20,
         height: 20,
         backgroundColor: 'transparent',

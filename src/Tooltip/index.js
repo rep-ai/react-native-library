@@ -8,16 +8,16 @@ import {
 import ModalScreen from '../ModalScreen'
 import styles from './styles'
 
-type TooltipProps = {
+type TooltipProps = {|
     visible: bool,
-    title?: string,
-    description: string,
-    onClose?: () => void,
     margin: number,
+    trianglePosition: 'top' | 'right' | 'bottom' | 'left' | 'none',
+    title?: string,
     justifyContent?: string,
     alignItems?: string,
-    trianglePosition: 'top' | 'right' | 'bottom' | 'left' | 'none',
-}
+    description: string,
+    onClose?: () => void,
+|}
 
 class Tooltip extends Component< TooltipProps > {
     static defaultProps = {
@@ -49,6 +49,7 @@ class Tooltip extends Component< TooltipProps > {
 
     getMargin = () => {
         const { trianglePosition, margin } = this.props
+
         switch (trianglePosition) {
             case 'top':
                 this.marginTop = margin
@@ -66,7 +67,6 @@ class Tooltip extends Component< TooltipProps > {
                 break
         }
     }
-
 
     render() {
         this.getMargin()
@@ -87,12 +87,13 @@ class Tooltip extends Component< TooltipProps > {
         } = this
 
         const flexDirection = this.getFlexDirection()
-        const justifyContent = this.props.justifyContent ? this.props.justifyContent : this.getJustifyContent()
+        const justifyContent = this.props.justifyContent
+            ? this.props.justifyContent : this.getJustifyContent()
 
         return (
-            <ModalScreen 
+            <ModalScreen
                 style={[
-                    styles.flex,{
+                    styles.flex, {
                         justifyContent,
                         alignItems,
                         marginTop,
@@ -105,20 +106,18 @@ class Tooltip extends Component< TooltipProps > {
                 visible={visible}
                 onRequestClose={onClose}
             >
-
                 {(trianglePosition === 'left' || trianglePosition === 'top') && (
                     <View style={styles[trianglePosition]} />
                 )}
-                
+
                 <View style={styles.innerContainer}>
-                    <Text style={styles.title}>{title}</Text>
-                    <Text style={styles.description}>{description}</Text>
+                    {!!title && <Text style={styles.title}>{title}</Text>}
+                    {!!description && <Text style={styles.description}>{description}</Text>}
                 </View>
-                
+
                 {(trianglePosition === 'right' || trianglePosition === 'bottom') && (
                     <View style={styles[trianglePosition]} />
                 )}
-
             </ModalScreen>
         )
     }
