@@ -1,2 +1,6 @@
-#Examples and Testing
-examples/
+ios/
+android/
+__tests__/
+app.json
+yarn.lock
+src/index.js
