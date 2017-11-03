@@ -1,123 +1,50 @@
-//@flow
-import React, { Component } from 'react'
-import {
-    View,
-    Text,
-} from 'react-native'
+// @flow
+import React, { PureComponent } from 'react'
+import { View, Text } from 'react-native'
 
 import ModalScreen from '../ModalScreen'
-import styles from './styles'
+import capitalize from '../UtilityMethods/capitalize'
+import styles, { triangleSize } from './styles'
 
 type TooltipProps = {|
     visible: bool,
-    margin: number,
-    trianglePosition: 'top' | 'right' | 'bottom' | 'left' | 'none',
+    offset?: number,
     title?: string,
-    justifyContent?: string,
-    alignItems?: string,
     description: string,
+    trianglePosition: 'top' | 'right' | 'bottom' | 'left' | 'none',
     onClose?: () => void,
+    style?: *,
 |}
 
-class Tooltip extends Component< TooltipProps > {
+class Tooltip extends PureComponent<TooltipProps> {
     static defaultProps = {
-        margin: 140,
-        alignItems: 'center',
-        trianglePosition: 'bottom',
-    }
-
-    marginTop: number = 0
-    marginRight: number = 0
-    marginBottom: number = 0
-    marginLeft: number = 0
-
-    getFlexDirection = () => {
-        const { trianglePosition } = this.props
-        if (trianglePosition === 'left' || trianglePosition === 'right') {
-            return 'row'
-        } else return 'column'
-    }
-
-    getJustifyContent = () => {
-        const { trianglePosition } = this.props
-        if (trianglePosition === 'left' || trianglePosition === 'top') {
-            return 'flex-start'
-        } else if (trianglePosition === 'none') {
-            return 'center'
-        } else return 'flex-end'
-    }
-
-    getMargin = () => {
-        const { trianglePosition, margin } = this.props
-
-        switch (trianglePosition) {
-            case 'top':
-                this.marginTop = margin
-                break
-            case 'right':
-                this.marginRight = margin
-                break
-            case 'bottom':
-                this.marginBottom = margin
-                break
-            case 'left':
-                this.marginLeft = margin
-                break
-            default:
-                break
-        }
+        visible: true,
     }
 
     render() {
-        this.getMargin()
         const {
             visible,
             title,
             description,
             onClose,
-            alignItems,
             trianglePosition,
+            style,
+            offset,
         } = this.props
-
-        const {
-            marginBottom,
-            marginTop,
-            marginRight,
-            marginLeft
-        } = this
-
-        const flexDirection = this.getFlexDirection()
-        const justifyContent = this.props.justifyContent
-            ? this.props.justifyContent : this.getJustifyContent()
 
         return (
             <ModalScreen
-                style={[
-                    styles.flex, {
-                        justifyContent,
-                        alignItems,
-                        marginTop,
-                        marginRight,
-                        marginBottom,
-                        marginLeft,
-                        flexDirection
-                }]}
+                style={[styles.container].concat(style)}
                 touchingBackgroundShouldHide={true}
                 visible={visible}
-                onRequestClose={onClose}
-            >
-                {(trianglePosition === 'left' || trianglePosition === 'top') && (
-                    <View style={styles[trianglePosition]} />
-                )}
-
-                <View style={styles.innerContainer}>
-                    {!!title && <Text style={styles.title}>{title}</Text>}
-                    {!!description && <Text style={styles.description}>{description}</Text>}
+                onRequestClose={onClose}>
+                <View style={[styles.innerContainer, trianglePosition === 'none' ? {} : {
+                    [`margin${capitalize(trianglePosition)}`]: Number(offset) + triangleSize,
+                }]}>
+                    <View style={[styles.triangle, styles[trianglePosition]]} />
+                    {!!title && <Text style={[styles.text, styles.title]}>{title}</Text>}
+                    <Text style={styles.text}>{description}</Text>
                 </View>
-
-                {(trianglePosition === 'right' || trianglePosition === 'bottom') && (
-                    <View style={styles[trianglePosition]} />
-                )}
             </ModalScreen>
         )
     }

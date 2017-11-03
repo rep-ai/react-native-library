@@ -1,5 +1,10 @@
 // @flow
 // Folder Components
+import { AppRegistry } from 'react-native'
+import App from './src'
+
+AppRegistry.registerComponent('ReactNativeLibrary', () => App)
+
 import _Button from './src/Button'
 export const Button = _Button
 
@@ -44,11 +49,11 @@ import _Header from './src/Header'
 export const Header = _Header
 
 import {
-    _HeaderButtonTouchable, 
+    _HeaderButtonTouchable,
     _HeaderButtonOptions,
     _BackButton,
     _CheckButton,
-    } from './src/HeaderButtons'
+} from './src/HeaderButtons'
 
 export const HeaderButtonTouchable = _HeaderButtonTouchable
 export const HeaderButtonOptions = _HeaderButtonOptions
