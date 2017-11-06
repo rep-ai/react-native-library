@@ -1,6 +1,6 @@
 {
   "name": "@rep-ai/react-native-library",
-  "version": "0.0.14",
+  "version": "0.0.13",
   "main": "index.js",
   "private": false,
   "scripts": {
@@ -9,8 +9,6 @@
   },
   "dependencies": {
     "check-types": "^7.3.0",
-    "react": "16.0.0",
-    "react-native": "0.50.0",
     "react-native-image-progress": "^1.0.1",
     "react-native-progress": "^3.4.0",
     "react-native-svg": "^5.4.2",
