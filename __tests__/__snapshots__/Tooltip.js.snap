@@ -1,0 +1,589 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "backgroundColor": "black",
+        "bottom": 0,
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hitSlop={undefined}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      testID={undefined}
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "white",
+              "borderRadius": 10,
+              "elevation": 24,
+              "justifyContent": "center",
+              "maxHeight": "70%",
+              "maxWidth": "80%",
+              "padding": 36,
+              "shadowColor": "black",
+              "shadowOffset": Object {
+                "height": 14.399999999999999,
+              },
+              "shadowOpacity": 0.216,
+              "shadowRadius": 12.96,
+            },
+            Object {
+              "marginTop": NaN,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": 40,
+                "position": "absolute",
+                "transform": Array [
+                  Object {
+                    "rotate": "45deg",
+                  },
+                ],
+                "width": 40,
+              },
+              Object {
+                "borderTopLeftRadius": 3,
+                "top": -20,
+              },
+            ]
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#444",
+              "fontSize": 21,
+              "textAlign": "center",
+            }
+          }
+        >
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders correctly 2`] = `
+<View
+  style={
+    Object {
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "backgroundColor": "black",
+        "bottom": 0,
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hitSlop={undefined}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      testID={undefined}
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "white",
+              "borderRadius": 10,
+              "elevation": 24,
+              "justifyContent": "center",
+              "maxHeight": "70%",
+              "maxWidth": "80%",
+              "padding": 36,
+              "shadowColor": "black",
+              "shadowOffset": Object {
+                "height": 14.399999999999999,
+              },
+              "shadowOpacity": 0.216,
+              "shadowRadius": 12.96,
+            },
+            Object {
+              "marginLeft": NaN,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": 40,
+                "position": "absolute",
+                "transform": Array [
+                  Object {
+                    "rotate": "45deg",
+                  },
+                ],
+                "width": 40,
+              },
+              Object {
+                "borderBottomLeftRadius": 3,
+                "left": -20,
+              },
+            ]
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#444",
+              "fontSize": 21,
+              "textAlign": "center",
+            }
+          }
+        >
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders correctly 3`] = `
+<View
+  style={
+    Object {
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "backgroundColor": "black",
+        "bottom": 0,
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hitSlop={undefined}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      testID={undefined}
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "white",
+              "borderRadius": 10,
+              "elevation": 24,
+              "justifyContent": "center",
+              "maxHeight": "70%",
+              "maxWidth": "80%",
+              "padding": 36,
+              "shadowColor": "black",
+              "shadowOffset": Object {
+                "height": 14.399999999999999,
+              },
+              "shadowOpacity": 0.216,
+              "shadowRadius": 12.96,
+            },
+            Object {
+              "marginBottom": NaN,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": 40,
+                "position": "absolute",
+                "transform": Array [
+                  Object {
+                    "rotate": "45deg",
+                  },
+                ],
+                "width": 40,
+              },
+              Object {
+                "borderBottomRightRadius": 3,
+                "bottom": -20,
+              },
+            ]
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#444",
+              "fontSize": 21,
+              "textAlign": "center",
+            }
+          }
+        >
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders correctly 4`] = `
+<View
+  style={
+    Object {
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "backgroundColor": "black",
+        "bottom": 0,
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hitSlop={undefined}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      testID={undefined}
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "white",
+              "borderRadius": 10,
+              "elevation": 24,
+              "justifyContent": "center",
+              "maxHeight": "70%",
+              "maxWidth": "80%",
+              "padding": 36,
+              "shadowColor": "black",
+              "shadowOffset": Object {
+                "height": 14.399999999999999,
+              },
+              "shadowOpacity": 0.216,
+              "shadowRadius": 12.96,
+            },
+            Object {
+              "marginRight": NaN,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "height": 40,
+                "position": "absolute",
+                "transform": Array [
+                  Object {
+                    "rotate": "45deg",
+                  },
+                ],
+                "width": 40,
+              },
+              Object {
+                "borderTopRightRadius": 3,
+                "right": -20,
+              },
+            ]
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#444",
+              "fontSize": 21,
+              "textAlign": "center",
+            }
+          }
+        >
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

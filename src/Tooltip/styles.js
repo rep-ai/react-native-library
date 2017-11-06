@@ -4,99 +4,67 @@ import { StyleSheet } from 'react-native'
 import { elevationToShadowProps } from '../util'
 
 const elevation = 24
+export const triangleSize = 20
+export const triangleVisualOffset = 1
+export const triangleBorderRadius = 3
 
 export default StyleSheet.create({
     innerContainer: {
         elevation,
         ...elevationToShadowProps(elevation),
         backgroundColor: 'white',
-        borderRadius: 8,
-        paddingHorizontal: 24,
-        paddingBottom: 24,
-        paddingTop: 24,
+        borderRadius: 10,
+        padding: 36,
         alignItems: 'center',
         justifyContent: 'center',
         maxHeight: '70%',
         maxWidth: '80%',
     },
 
-    flex: {
+    container: {
         flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    text: {
+        fontSize: 21,
+        textAlign: 'center',
+        backgroundColor: 'transparent',
+        color: '#444',
     },
 
     title: {
-        fontSize: 26,
-        textAlign: 'center',
-        marginVertical: 12,
-        color: '#5D5D5D',
+        fontSize: 32,
+        marginBottom: 18,
     },
 
-    description: {
-        fontSize: 17,
-        textAlign: 'center',
-        marginHorizontal: 12,
-        marginBottom: 16,
-        color: '#797979'
+    triangle: {
+        position: 'absolute',
+        width: triangleSize * 2,
+        height: triangleSize * 2,
+        backgroundColor: 'white',
+        transform: [{ rotate: '45deg' }],
     },
 
     top: {
-        width: 20,
-        height: 20,
-        backgroundColor: 'transparent',
-        borderStyle: 'solid',
-        borderTopWidth: 0,
-        borderRightWidth: 20,
-        borderBottomWidth: 20,
-        borderLeftWidth: 20,
-        borderTopColor: 'transparent',
-        borderRightColor: 'transparent',
-        borderBottomColor: 'white',
-        borderLeftColor: 'transparent',
+        top: -triangleSize,
+        borderTopLeftRadius: triangleBorderRadius,
     },
 
     bottom: {
-        width: 20,
-        height: 20,
-        backgroundColor: 'transparent',
-        borderStyle: 'solid',
-        borderTopWidth: 20,
-        borderRightWidth: 20,
-        borderBottomWidth: 0,
-        borderLeftWidth: 20,
-        borderTopColor: 'white',
-        borderRightColor: 'transparent',
-        borderBottomColor: 'transparent',
-        borderLeftColor: 'transparent',
+        bottom: -triangleSize,
+        borderBottomRightRadius: triangleBorderRadius,
     },
 
     left: {
-        width: 20,
-        height: 20,
-        backgroundColor: 'transparent',
-        borderStyle: 'solid',
-        borderTopWidth: 20,
-        borderRightWidth: 20,
-        borderBottomWidth: 20,
-        borderLeftWidth: 0,
-        borderTopColor: 'transparent',
-        borderRightColor: 'white',
-        borderBottomColor: 'transparent',
-        borderLeftColor: 'transparent',
+        left: -triangleSize,
+        borderBottomLeftRadius: triangleBorderRadius,
     },
 
     right: {
-        width: 20,
-        height: 20,
-        backgroundColor: 'transparent',
-        borderStyle: 'solid',
-        borderTopWidth: 20,
-        borderRightWidth: 0,
-        borderBottomWidth: 20,
-        borderLeftWidth: 20,
-        borderTopColor: 'transparent',
-        borderRightColor: 'transparent',
-        borderBottomColor: 'transparent',
-        borderLeftColor: 'white',
+        right: -triangleSize,
+        borderTopRightRadius: triangleBorderRadius,
     },
 
     none: {},
