@@ -28,6 +28,7 @@ class Button extends PureComponent {
         height: 55,
         borderWidth: 2,
         borderColor: colors.main,
+        borderRadius: null,
         fontSize: 19,
         fontWeight: '500',
         invertColors: false,
@@ -43,6 +44,7 @@ class Button extends PureComponent {
         borderWidth: number,
         activeBackgroundColor: string,
         borderColor: string,
+        borderRadius: number,
         fontSize: number,
         fontWeight: string,
         invertColors?: bool,
@@ -111,7 +113,7 @@ class Button extends PureComponent {
             height,
         } = this.props
 
-        const borderRadius = height / 2
+        const borderRadius = (typeof this.props.borderRadius === 'number') ? this.props.borderRadius : height / 2
 
         return (
             <View style={mergeStyles(
