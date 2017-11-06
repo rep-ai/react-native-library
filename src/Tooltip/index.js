@@ -5,18 +5,9 @@ import { View, Text } from 'react-native'
 import ModalScreen from '../ModalScreen'
 import capitalize from '../UtilityMethods/capitalize'
 import styles, { triangleSize } from './styles'
+import type { TooltipProps } from './flowTypes'
 
-type TooltipProps = {|
-    visible: bool,
-    offset?: number,
-    title?: string,
-    description: string,
-    trianglePosition: 'top' | 'right' | 'bottom' | 'left' | 'none',
-    onClose?: () => void,
-    style?: *,
-|}
-
-class Tooltip extends PureComponent<TooltipProps> {
+export default class Tooltip extends PureComponent<TooltipProps> {
     static defaultProps = {
         visible: true,
     }
@@ -26,10 +17,10 @@ class Tooltip extends PureComponent<TooltipProps> {
             visible,
             title,
             description,
-            onClose,
             trianglePosition,
             style,
             offset,
+            onClose,
         } = this.props
 
         return (
@@ -49,5 +40,3 @@ class Tooltip extends PureComponent<TooltipProps> {
         )
     }
 }
-
-export default Tooltip
