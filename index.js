@@ -33,6 +33,9 @@ export const Alert = _Alert
 import _AvatarView from './src/AvatarView'
 export const AvatarView = _AvatarView
 
+import _CheckBox from './src/CheckBox'
+export const CheckBox = _CheckBox
+
 import _colors from './src/colors'
 export const colors = _colors
 
