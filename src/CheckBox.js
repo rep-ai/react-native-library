@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import colors from '../colors'
+import colors from './colors'
 
 type CheckBoxProps = {
     checked: bool,
