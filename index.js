@@ -33,6 +33,9 @@ export const Alert = _Alert
 import _AvatarView from './src/AvatarView'
 export const AvatarView = _AvatarView
 
+import _Card from './src/Card'
+export const Card = _Card
+
 import _CheckBox from './src/CheckBox'
 export const CheckBox = _CheckBox
 
