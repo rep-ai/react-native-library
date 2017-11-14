@@ -33,25 +33,30 @@ export const stylesObject = {
         alignItems: 'center',
         justifyContent: 'center',
     },
+    
     createButtonText: {
         fontWeight: 'bold',
         color: 'white',
         fontSize: 17,
         letterSpacing: 2,
     },
+
     container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
+
     itemSeparatorComponent: {
         flex: 1,
         backgroundColor: '#f1f1f1',
         height: StyleSheet.hairlineWidth,
     },
+
     colorGrey: {
         color: '#999',
     },
+
     absoluteFill: {
         position: 'absolute',
         top: 0,
@@ -59,6 +64,7 @@ export const stylesObject = {
         right: 0,
         bottom: 0,
     },
+
     absoluteContainer: {
         position: 'absolute',
         top: 0,
@@ -67,6 +73,7 @@ export const stylesObject = {
         bottom: 0,
         backgroundColor: 'white',
     },
+
     ActivityIndicator: {
         position: 'absolute',
         top: 0,
@@ -75,11 +82,18 @@ export const stylesObject = {
         bottom: 0,
         backgroundColor: 'white',
     },
+
     logoImage: {
         margin: 12,
         width: 949 / 5,
         height: 372 / 5,
     },
+
+    flexStart: {
+        flex: 1,
+        justifyContent: 'flex-start'
+    },
+
     flexStartRow: {
         alignItems: 'flex-start',
         flexDirection: 'row',
