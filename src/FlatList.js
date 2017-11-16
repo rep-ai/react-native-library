@@ -1,6 +1,6 @@
 //@flow
 // NOTE: Using require here allows use of flow types such as React.ComponentType
-const React = require('React')
+const React = require('react')
 import { PureComponent } from 'react'
 import { FlatList } from 'react-native'
 import checkType from 'check-types'
