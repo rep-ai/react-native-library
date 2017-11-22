@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react'
 import {
     StyleSheet,
-    TouchableOpacity
+    TouchableOpacity,
 } from 'react-native'
 
 import AvatarView from '../AvatarView'
@@ -31,8 +31,7 @@ class HorizontalIconsList extends PureComponent<Props, State> {
     }
 
     componentWillReceiveProps(nextProps) {
-        const data = nextProps.data
-        this.setState({data})
+        this.setState({data: nextProps.data})
     }
  
     render() {
@@ -40,27 +39,26 @@ class HorizontalIconsList extends PureComponent<Props, State> {
             size,
             showsHorizontalScrollIndicator,
             overlayColor,
+            data,
         } = this.props
         return (
             <FlatList
                 style={{marginLeft: 11.5}}
                 horizontal={true}
                 showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
-                data={this.state.data}
+                data={data}
                 extraData={this.state}
-                renderItem={({item, index}) => {
-                    const {avatar} = item
+                renderItem={( {item, index} ) => {
+                    const { avatar } = item
                     return (
-                        <TouchableOpacity onPress={() => console.warn('hi')}>
-                            <AvatarView
-                                avatar={avatar}
-                                size={size}
-                                style={
-                                    styles.avatarView
-                                }
-                                overlayColor={overlayColor}
-                            />
-                        </TouchableOpacity>
+                        <AvatarView
+                            avatar={avatar}
+                            size={size}
+                            style={
+                                styles.avatarView
+                            }
+                            overlayColor={overlayColor}
+                        />
                     )
                 }}
             />

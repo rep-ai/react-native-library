@@ -19,6 +19,9 @@ type StoryUserListProps = {|
     onDone: (items: any[]) => void,
     handleRefresh?: () => void,
     handleEndReached?: () => void,
+    component?: 'button' | 'checkbox',
+    selectedText?: string,
+    unselectedText?: string,
 |}
 
 type StoryUserListState = {|
@@ -49,22 +52,27 @@ class StoryUserList extends Component<StoryUserListProps, StoryUserListState> {
     }
 
     addChecked = (index: number) => {
-        let { data, checkedItems } = this.state
+        const { data } = this.state
         data[index].checked = true
+        const checkedItems = this.state.checkedItems.map((item) => item) //create new array for FlatList re-render
         checkedItems.push(data[index])
         
-        // values set here
         this.setState({ data, checkedItems })
     }
 
     removeChecked = (index: number) => {
-        let { data, checkedItems } = this.state
+        const { data, checkedItems } = this.state
         data[index].checked = false
-        let newCheckedItems = checkedItems.filter((item) => {
-            return item.id !== data[index].id
+        const newCheckedItems = checkedItems.filter((item) => {
+            if (item.id) {
+                return item.id !== data[index].id
+            }
+            if (item.username) {
+                return item.username !== data[index].username
+            }
+            
         })
 
-        // values set here
         this.setState({ data, checkedItems: newCheckedItems })
     }
 
@@ -75,9 +83,10 @@ class StoryUserList extends Component<StoryUserListProps, StoryUserListState> {
             handleRefresh,
             handleEndReached,
             buttonText,
+            component,
+            selectedText,
+            unselectedText
         } = this.props
-
-        console.log('data',data)
 
         return (
             <View style={styles.flexStart}>
@@ -89,6 +98,9 @@ class StoryUserList extends Component<StoryUserListProps, StoryUserListState> {
                         refreshing={this.state.refreshing}
                         onEndReached={handleEndReached}
                         overlayColor="transparent"
+                        component={component}
+                        selectedText={selectedText}
+                        unselectedText={unselectedText}
                     />
                 </View>
                 <View style={{height: 64, flexDirection: 'row', alignItems: 'center'}}>
