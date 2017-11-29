@@ -8,9 +8,7 @@ import styles, { triangleSize } from './styles'
 import type { TooltipProps } from './flowTypes'
 
 export default class Tooltip extends PureComponent<TooltipProps> {
-    static defaultProps = {
-        visible: true,
-    }
+    static defaultProps = { visible: true }
 
     render() {
         const {
@@ -18,7 +16,6 @@ export default class Tooltip extends PureComponent<TooltipProps> {
             title,
             description,
             trianglePosition,
-            offset,
             onClose,
         } = this.props
 
@@ -30,7 +27,7 @@ export default class Tooltip extends PureComponent<TooltipProps> {
                 onRequestClose={onClose}>
                 <View>
                     <View style={[styles.innerContainer, trianglePosition === 'none' ? {} : {
-                        [`margin${capitalize(trianglePosition)}`]: Number(offset) + triangleSize,
+                        [`margin${capitalize(trianglePosition)}`]: triangleSize,
                     }]}>
                         <View style={[styles.triangle, styles[trianglePosition]]} />
                         {!!title && <Text style={[styles.text, styles.title]}>{title}</Text>}
