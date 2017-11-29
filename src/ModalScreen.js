@@ -42,7 +42,6 @@ export default class ModalScreen extends PureComponent<Props> {
     componentIsMounted: bool = false
 
     componentWillMount() {
-        console.warn('componentWillMount')
         this.componentIsMounted = true
         this.props.visible && this.show()
     }
@@ -120,8 +119,6 @@ export default class ModalScreen extends PureComponent<Props> {
     }
 
     hide = () => {
-        console.warn('this.hide()')
-
         const { onHide } = this.props
 
         if (!this.componentIsMounted) {
