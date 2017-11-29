@@ -16,13 +16,20 @@ export type Props = {|
     backgroundColor: string,
     speed: number,
     bouncines: number,
+    onRequestClose?: () => any,
     onHide?: () => any,
     onShow?: () => any,
     children: any,
     style?: any,
 |}
 
-export default class ModalScreen extends PureComponent<Props> {
+export type State = {|
+    opacity: any,
+    translateY: any,
+    hidden: bool,
+|}
+
+export default class ModalScreen extends PureComponent<Props, State> {
     static defaultProps = {
         backgroundOpacity: 0.75,
         backgroundColor: 'black',
@@ -31,11 +38,9 @@ export default class ModalScreen extends PureComponent<Props> {
         bouncines: 4,
     }
 
-    height: number = Dimensions.get('window').height
-
     state = {
         opacity: new Animated.Value(0),
-        translateY: new Animated.Value(this.height),
+        translateY: new Animated.Value(Dimensions.get('window').height),
         hidden: true,
     }
 
@@ -48,6 +53,7 @@ export default class ModalScreen extends PureComponent<Props> {
 
     componentWillUnmount() {
         this.componentIsMounted = false
+        this.props.onRequestClose && this.props.onRequestClose()
         this.props.onHide && this.props.onHide()
     }
 
@@ -100,7 +106,7 @@ export default class ModalScreen extends PureComponent<Props> {
     handleHideAnimation = () => {
         Animated.parallel([
             Animated.timing(this.state.translateY, {
-                toValue: this.height,
+                toValue: Dimensions.get('window').height,
                 duration: 300,
                 useNativeDriver: true,
             }),

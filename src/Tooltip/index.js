@@ -5,9 +5,16 @@ import { View, Text } from 'react-native'
 import ModalScreen from '../ModalScreen'
 import capitalize from '../UtilityMethods/capitalize'
 import styles, { triangleSize } from './styles'
-import type { TooltipProps } from './flowTypes'
 
-export default class Tooltip extends PureComponent<TooltipProps> {
+export type Props = {|
+    description: string,
+    trianglePosition: 'top' | 'right' | 'bottom' | 'left' | 'none',
+    visible?: bool,
+    title?: string,
+    onClose?: () => void,
+|}
+
+export default class Tooltip extends PureComponent<Props> {
     static defaultProps = { visible: true }
 
     render() {
@@ -23,7 +30,7 @@ export default class Tooltip extends PureComponent<TooltipProps> {
             <ModalScreen
                 style={styles.container}
                 touchingBackgroundShouldHide={true}
-                visible={visible}
+                visible={!!visible}
                 onRequestClose={onClose}>
                 <View>
                     <View style={[styles.innerContainer, trianglePosition === 'none' ? {} : {
