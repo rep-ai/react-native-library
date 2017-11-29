@@ -1,7 +1,8 @@
 // @flow
 import React, { Component } from 'react'
 import { Text, StyleSheet } from 'react-native'
-import colors  from './colors'
+import type { StyleObj } from 'react-native/Libraries/StyleSheet/StyleSheetTypes'
+import colors from './colors'
 
 import mergeStyles from './UtilityMethods/mergeStyles'
 import LoadingText from './LoadingText'
@@ -9,13 +10,13 @@ import LoadingText from './LoadingText'
 export type TextProps = {
     ellipsizeMode: 'head' | 'middle' | 'tail' | 'clip',
     numberOfLines: number,
-    allowFontScaling: false,
-    adjustsFontSizeToFit: false,
+    allowFontScaling: bool,
+    adjustsFontSizeToFit: bool,
 
     minimumFontScale?: number,
-    suppressHighlighting?: false,
+    suppressHighlighting?: bool,
     selectable?: bool,
-    style?: any,
+    style?: StyleObj,
     children?: any,
 
     loading?: bool,
@@ -23,30 +24,33 @@ export type TextProps = {
     loadingHeight?: number,
 }
 
-class TextComponent extends Component {
+class TextComponent extends Component<TextProps> {
     static defaultProps = {
         selectable: true,
         suppressHighlighting: false,
         numberOfLines: 1,
-        ellipsizeMode: 'tail',
-        // unsure if this effects non-scaled text.
+        // NOTE: Unsure if this effects non-scaled text.
         minimumFontScale: 1,
-        // Stops ellipsizeMode from working if true.
+        // NOTE: Stops ellipsizeMode from working if true.
         allowFontScaling: false,
         adjustsFontSizeToFit: false,
     }
 
-    props: TextProps
     style = mergeStyles(styles.text, this.props.style)
 
-    componentWillReceiveProps({ style }: any) {
+    componentWillReceiveProps({ style }: TextProps) {
         if (style) {
             this.style = mergeStyles(styles.text, style)
         }
     }
 
     render() {
-        const { loading, loadingWidth, loadingHeight, children } = this.props
+        const {
+            loading,
+            loadingWidth,
+            loadingHeight,
+            children,
+        } = this.props
 
         if (loading) {
             return (
@@ -67,7 +71,6 @@ class TextComponent extends Component {
 export const styles = StyleSheet.create({
     text: {
         fontSize: 15,
-        letterSpacing: 0,
         color: colors.text,
         backgroundColor: 'transparent',
     },
