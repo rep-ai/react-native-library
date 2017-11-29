@@ -6,5 +6,4 @@ export type TooltipProps = {|
     offset?: number,
     title?: string,
     onClose?: () => void,
-    style?: *,
 |}

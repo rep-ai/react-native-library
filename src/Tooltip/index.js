@@ -18,23 +18,24 @@ export default class Tooltip extends PureComponent<TooltipProps> {
             title,
             description,
             trianglePosition,
-            style,
             offset,
             onClose,
         } = this.props
 
         return (
             <ModalScreen
-                style={[styles.container].concat(style)}
+                style={styles.container}
                 touchingBackgroundShouldHide={true}
                 visible={visible}
                 onRequestClose={onClose}>
-                <View style={[styles.innerContainer, trianglePosition === 'none' ? {} : {
-                    [`margin${capitalize(trianglePosition)}`]: Number(offset) + triangleSize,
-                }]}>
-                    <View style={[styles.triangle, styles[trianglePosition]]} />
-                    {!!title && <Text style={[styles.text, styles.title]}>{title}</Text>}
-                    <Text style={styles.text}>{description}</Text>
+                <View>
+                    <View style={[styles.innerContainer, trianglePosition === 'none' ? {} : {
+                        [`margin${capitalize(trianglePosition)}`]: Number(offset) + triangleSize,
+                    }]}>
+                        <View style={[styles.triangle, styles[trianglePosition]]} />
+                        {!!title && <Text style={[styles.text, styles.title]}>{title}</Text>}
+                        <Text style={styles.text}>{description}</Text>
+                    </View>
                 </View>
             </ModalScreen>
         )
