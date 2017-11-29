@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
 import {
     View,
@@ -9,7 +9,20 @@ import {
     StyleSheet,
 } from 'react-native'
 
-class ModalScreen extends Component {
+export type Props = {|
+    visible: bool,
+    touchingBackgroundShouldHide: bool,
+    backgroundOpacity: number,
+    backgroundColor: string,
+    speed: number,
+    bouncines: number,
+    onHide?: () => any,
+    onShow?: () => any,
+    children: any,
+    style?: any,
+|}
+
+export default class ModalScreen extends PureComponent<Props> {
     static defaultProps = {
         backgroundOpacity: 0.75,
         backgroundColor: 'black',
@@ -18,21 +31,7 @@ class ModalScreen extends Component {
         bouncines: 4,
     }
 
-    props: {
-        visible: bool,
-        children: any,
-        touchingBackgroundShouldHide: bool,
-        backgroundOpacity: number,
-        backgroundColor: string,
-        speed: number,
-        bouncines: number,
-        onHide?: () => any,
-        onShow?: () => any,
-        style?: any,
-    }
-
-    height: number
-    height = Dimensions.get('window').height
+    height: number = Dimensions.get('window').height
 
     state = {
         opacity: new Animated.Value(0),
@@ -40,70 +39,67 @@ class ModalScreen extends Component {
         hidden: true,
     }
 
-    state: {
-        opacity: any,
-        translateY: any,
-        hidden: bool,
-    }
-
-    componentIsMounted: bool
-    componentIsMounted = false
+    componentIsMounted: bool = false
 
     componentWillMount() {
+        console.warn('componentWillMount')
         this.componentIsMounted = true
-        this.props.visible
-        && this.show()
+        this.props.visible && this.show()
     }
 
     componentWillUnmount() {
         this.componentIsMounted = false
-        this.props.onHide
-        && this.props.onHide()
+        this.props.onHide && this.props.onHide()
     }
 
     componentWillReceiveProps({ visible }: { visible: bool }) {
-        typeof visible !== 'undefined'
-        && (visible ? this.show : this.hide)()
+        if (typeof visible !== 'undefined') {
+            if (visible) {
+                this.show()
+            } else {
+                this.hide()
+            }
+        }
+    }
+
+    handleShowAnimation = () => {
+        const {
+            backgroundOpacity,
+            speed,
+            bouncines,
+        } = this.props
+
+        this.componentIsMounted && Animated.parallel([
+            Animated.spring(this.state.translateY, {
+                toValue: 0,
+                speed: speed,
+                bouncines: bouncines,
+                useNativeDriver: true,
+            }),
+            Animated.timing(this.state.opacity, {
+                toValue: backgroundOpacity,
+                duration: 300,
+                useNativeDriver: true,
+            })
+        ], { stopTogether: false })
+        .start()
     }
 
     show = () => {
+        const { onShow } = this.props
+
         if (!this.componentIsMounted) {
             return
         }
 
-        this.props.onShow
-        && this.props.onShow()
+        onShow && onShow()
 
         this.state.hidden
-        && this.setState({ hidden: false }, () => {
-            this.componentIsMounted
-            && Animated.parallel([
-                Animated.spring(this.state.translateY, {
-                    toValue: 0,
-                    speed: this.props.speed,
-                    bouncines: this.props.bouncines,
-                    useNativeDriver: true,
-                }),
-                Animated.timing(this.state.opacity, {
-                    toValue: this.props.backgroundOpacity,
-                    duration: 300,
-                    useNativeDriver: true,
-                })
-            ], { stopTogether: false })
-            .start()
-        })
+        && this.setState({ hidden: false }, this.handleShowAnimation)
     }
 
-    hide = () => {
-        if (!this.componentIsMounted) {
-            return
-        }
-        
-        this.props.onHide
-        && this.props.onHide()
-
-        !this.state.hidden
-        && Animated.parallel([
+    handleHideAnimation = () => {
+        Animated.parallel([
             Animated.timing(this.state.translateY, {
                 toValue: this.height,
                 duration: 300,
@@ -115,7 +111,7 @@ class ModalScreen extends Component {
                 useNativeDriver: true,
             }),
         ], { stopTogether: false })
-        .start((event) => {
+        .start((event: { finished: bool }) => {
             event
             && event.finished
             && this.componentIsMounted
@@ -123,11 +119,27 @@ class ModalScreen extends Component {
         })
     }
 
+    hide = () => {
+        console.warn('this.hide()')
+
+        const { onHide } = this.props
+
+        if (!this.componentIsMounted) {
+            return
+        }
+
+        onHide && onHide()
+
+        // NOTE: this calls setState after the animation is complete.
+        !this.state.hidden
+        && this.handleHideAnimation()
+    }
+
     render() {
         const {
             style,
             backgroundColor,
-            touchingBackgroundShouldHide
+            touchingBackgroundShouldHide,
         } = this.props
 
         if (this.state.hidden) {
@@ -146,19 +158,15 @@ class ModalScreen extends Component {
                 <Animated.View style={[styles.positionAbsolute, {
                     transform: [{ translateY: this.state.translateY }]
                 }]}>
-                    {!!touchingBackgroundShouldHide && (
-                        <TouchableWithoutFeedback onPress={this.hide}>
-                            <View style={styles.positionAbsolute} />
-                        </TouchableWithoutFeedback>
-                    )}
+                    <View style={[{ flex: 1 }].concat(style)}>
+                        {!!touchingBackgroundShouldHide && (
+                            <TouchableWithoutFeedback onPress={this.hide}>
+                                <View style={styles.positionAbsolute} />
+                            </TouchableWithoutFeedback>
+                        )}
 
-                    {style ? (
-                        <View style={style}>
-                            {this.props.children}
-                        </View>
-                    ) : (
-                        this.props.children
-                    )}
+                        {this.props.children}
+                    </View>
                 </Animated.View>
             </View>
         )
@@ -174,5 +182,3 @@ const styles = StyleSheet.create({
         bottom: 0,
     }
 })
-
-export default ModalScreen
