@@ -7,11 +7,11 @@ import colors from './colors'
 import mergeStyles from './UtilityMethods/mergeStyles'
 import LoadingText from './LoadingText'
 
-export type TextProps = {
-    ellipsizeMode: 'head' | 'middle' | 'tail' | 'clip',
-    numberOfLines: number,
-    allowFontScaling: bool,
-    adjustsFontSizeToFit: bool,
+export type Props = {|
+    ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip',
+    numberOfLines?: number,
+    allowFontScaling?: bool,
+    adjustsFontSizeToFit?: bool,
 
     minimumFontScale?: number,
     suppressHighlighting?: bool,
@@ -22,9 +22,31 @@ export type TextProps = {
     loading?: bool,
     loadingWidth?: number,
     loadingHeight?: number,
-}
 
-class TextComponent extends Component<TextProps> {
+    textBreakStrategy?: 'simple' | 'highQuality' | 'balanced',
+    onLayout?: (event: {
+        nativeEvent: {
+            layout: {
+                x: number,
+                y: number,
+                width: number,
+                height: number
+            }
+        }
+    }) => void,
+    onPress?: (event: *) => void,
+    onLongPress?: (event: *) => void,
+    selectable?: bool,
+    selectionColor?: string,
+    suppressHighlighting?: bool,
+    style?: StyleObj,
+    testID?: string,
+    nativeID?: string,
+    accessible?: bool,
+    disabled?: bool,
+|}
+
+class TextComponent extends Component<Props> {
     static defaultProps = {
         selectable: true,
         suppressHighlighting: false,
@@ -38,7 +60,7 @@ class TextComponent extends Component<TextProps> {
 
     style = mergeStyles(styles.text, this.props.style)
 
-    componentWillReceiveProps({ style }: TextProps) {
+    componentWillReceiveProps({ style }: Props) {
         if (style) {
             this.style = mergeStyles(styles.text, style)
         }
