@@ -1,11 +1,25 @@
 // @flow
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Image, View, ActivityIndicator } from 'react-native'
 
 import colors from './colors'
 import styles from './styles'
 
-class AvatarView extends Component {
+import type { StyleObj } from 'react-native/Libraries/StyleSheet/StyleSheetTypes'
+
+export type Props = {|
+    avatar?: { uri?: string },
+    style?: StyleObj,
+    size?: number,
+    overlayColor?: string,
+|}
+
+export type State = {|
+    loading: bool,
+    imageVisible: bool,
+|}
+
+export default class AvatarView extends PureComponent<Props, State> {
     static defaultProps = {
         avatar: {},
         style: {},
@@ -13,29 +27,9 @@ class AvatarView extends Component {
         overlayColor: 'transparent'
     }
 
-    props: {
-        avatar?: { uri?: string },
-        style?: any,
-        size: number,
-        overlayColor: string
-    }
-
     state = {
         loading: false,
-        imageVisible: false,
-        avatar: this.props.avatar
-    }
-
-    state: {
-        loading: bool,
-        imageVisible: bool,
-    }
-
-    circleStyle: { width: number, height: number, borderRadius: number }
-    circleStyle = {
-        width: this.props.size,
-        height: this.props.size,
-        borderRadius: this.props.size / 2,
+        imageVisible: false
     }
 
     handleLoadStart = () => {
@@ -61,7 +55,7 @@ class AvatarView extends Component {
         const circleStyle = {
             width: this.props.size,
             height: this.props.size,
-            borderRadius: this.props.size / 2,
+            borderRadius: Number(this.props.size) / 2,
         }
 
         return (
@@ -78,8 +72,8 @@ class AvatarView extends Component {
                     ]}
                     source={
                         (this.props.avatar && this.props.avatar.uri)
-                        ? this.props.avatar
-                        : require('./images/avatarPlaceholder.png')
+                            ? this.props.avatar
+                            : require('./images/avatarPlaceholder.png')
                     }
                     defaultSource={require('./images/avatarPlaceholder.png')}
                     resizeMode="cover"
@@ -99,5 +93,3 @@ class AvatarView extends Component {
         )
     }
 }
-
-export default AvatarView
