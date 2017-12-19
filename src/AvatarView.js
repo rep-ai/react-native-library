@@ -21,7 +21,6 @@ export type State = {|
 
 export default class AvatarView extends PureComponent<Props, State> {
     static defaultProps = {
-        avatar: {},
         style: {},
         size: 50,
         overlayColor: 'transparent',

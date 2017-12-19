@@ -8,7 +8,7 @@ import type { StyleObj } from 'react-native/Libraries/StyleSheet/StyleSheetTypes
 import type { ViewToken } from 'react-native/Libraries/Lists/ViewabilityHelper'
 
 export type FlatListProps<ItemT> = {
-    data: [] | ItemT[],
+    data: ItemT[],
     renderItem: (info: {
         item: ItemT,
         index: number,
