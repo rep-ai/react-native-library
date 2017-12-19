@@ -8,15 +8,15 @@ import styles from './styles'
 import type { StyleObj } from 'react-native/Libraries/StyleSheet/StyleSheetTypes'
 
 export type Props = {|
-    avatar?: { uri?: string },
+    avatar?: { uri: string },
     style?: StyleObj,
     size?: number,
     overlayColor?: string,
 |}
 
 export type State = {|
-    loading: bool,
-    imageVisible: bool,
+    loading: boolean,
+    imageVisible: boolean,
 |}
 
 export default class AvatarView extends PureComponent<Props, State> {
@@ -24,22 +24,22 @@ export default class AvatarView extends PureComponent<Props, State> {
         avatar: {},
         style: {},
         size: 50,
-        overlayColor: 'transparent'
+        overlayColor: 'transparent',
     }
 
     state = {
         loading: false,
-        imageVisible: false
+        imageVisible: false,
     }
 
     handleLoadStart = () => {
         if (this.props.avatar && this.props.avatar.uri && !this.state.loading) {
-            this.setState({ loading : true })
+            this.setState({ loading: true })
         }
     }
 
     handleLoadEnd = () => {
-        this.setState({ loading : false })
+        this.setState({ loading: false })
     }
 
     handleError = (e: Error) => {
@@ -47,10 +47,7 @@ export default class AvatarView extends PureComponent<Props, State> {
     }
 
     render() {
-        const {
-            style,
-            overlayColor
-        } = this.props
+        const { style, overlayColor } = this.props
 
         const circleStyle = {
             width: this.props.size,
@@ -59,19 +56,18 @@ export default class AvatarView extends PureComponent<Props, State> {
         }
 
         return (
-            <View style={[
-                circleStyle, {
-                    backgroundColor: colors.middleGrey
-                }
-            ].concat(style)}>
+            <View
+                style={[
+                    circleStyle,
+                    {
+                        backgroundColor: colors.middleGrey,
+                    },
+                ].concat(style)}
+            >
                 <Image
-                    style={[
-                        styles.absoluteFill,
-                        circleStyle,
-                        { overlayColor }
-                    ]}
+                    style={[styles.absoluteFill, circleStyle, { overlayColor }]}
                     source={
-                        (this.props.avatar && this.props.avatar.uri)
+                        this.props.avatar && this.props.avatar.uri
                             ? this.props.avatar
                             : require('./images/avatarPlaceholder.png')
                     }
@@ -83,9 +79,13 @@ export default class AvatarView extends PureComponent<Props, State> {
                 />
                 {!!this.state.loading && (
                     <ActivityIndicator
-                        style={[styles.absoluteFill, circleStyle, {
-                            backgroundColor: colors.middleGrey,
-                        }]}
+                        style={[
+                            styles.absoluteFill,
+                            circleStyle,
+                            {
+                                backgroundColor: colors.middleGrey,
+                            },
+                        ]}
                         color="white"
                     />
                 )}
