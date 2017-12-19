@@ -1,50 +1,59 @@
 // @flow
+
 import React, { Component } from 'react'
-import { TouchableWithoutFeedback, View, StyleSheet } from 'react-native'
+import {
+    TouchableWithoutFeedback,
+    View,
+    StyleSheet,
+    SectionList,
+} from 'react-native'
 
 import CheckBox from '../CheckBox'
-import FlatList from '../FlatList'
 import Button from '../Button'
+import Title from '../Title'
 
 import UserListItem from './UserListItem'
 
 type Props = {|
-    data: any[],
+    sections: Array<{
+        data: any[],
+        title: string
+    }>,
     handleTouchItem: (index: number) => void,
     onEndReached?: () => void,
     onRefresh?: () => void,
-    refreshing: boolean,
+    refreshing: bool,
     overlayColor: string,
     component?: 'button' | 'checkbox',
     selectedText: string,
-    unselectedText: string,
+    unselectedText: string
 |}
 
 type State = {|
-    data: any[],
+    sections: any[]
 |}
 
-class UserList extends Component<Props, State> {
+class UserSectionList extends Component<Props, State> {
     static defaultProps = {
         component: 'checkbox',
         selectedText: 'remove',
-        unselectedText: 'add',
+        unselectedText: 'add'
     }
 
     constructor(props) {
         super(props)
         this.state = {
-            data: this.props.data
+            sections: this.props.sections
         }
     }
 
-    componentWillReceiveProps(nextProps: Props) {
-        this.setState({ data: nextProps.data })
+    componentWillReceiveProps(nextProps) {
+        this.setState({sections: nextProps.sections})
     }
-
+ 
     render() {
         const {
-            data,
+            sections,
             handleTouchItem,
             onEndReached,
             onRefresh,
@@ -52,21 +61,28 @@ class UserList extends Component<Props, State> {
             overlayColor,
             component,
             selectedText,
-            unselectedText,
+            unselectedText
         } = this.props
-
         return (
-            <FlatList
-                data={data}
+            <SectionList
+                sections={sections}
                 extraData={this.state}
                 onEndReached={onEndReached}
                 onRefresh={onRefresh}
                 refreshing={refreshing}
-                renderItem={({ item, index }) => {
-                    const { username, avatar } = item
-                    const { checked } = this.state.data[index]
+                renderSectionHeader={({section}) => (
+                    <Title>
+                        {section.title}
+                    </Title>
+                )}
+                renderItem={({item, section, index, separators}) => {
+                    const {
+                        username,
+                        avatar,
+                        checked
+                    } = item
 
-                    if (component === 'checkbox') {
+                    if (section.component === 'checkbox'){
                         return (
                             <View>
                                 <TouchableWithoutFeedback onPress={() => handleTouchItem(index)}>
@@ -88,8 +104,7 @@ class UserList extends Component<Props, State> {
                             </View>
                         )
                     }
-
-                    if (component === 'button') {
+                    if (section.component === 'button') {
                         return (
                             <View>
                                 <UserListItem
@@ -98,41 +113,41 @@ class UserList extends Component<Props, State> {
                                     avatar={avatar}
                                     uri={avatar && avatar.uri}
                                     overlayColor={overlayColor}
-                                    handlePress={() => handleTouchItem(index)}
                                 />
-                                <Button
-                                    title={checked ? selectedText : unselectedText}
+                                <Button 
+                                    color={section.buttonColor ? section.buttonColor : colors.main}
+                                    activeBackgroundColor={section.buttonColor ? section.buttonColor : colors.main}
+                                    borderColor={section.buttonColor ? section.buttonColor : colors.main}
+                                    title={checked ? section.selectedText : section.unselectedText}
                                     onPress={() => handleTouchItem(index)}
                                     style={[styles.button, styles.checkPosition]}
-                                    height={30}
-                                    fontSize={12}
+                                    fontSize={14}
+                                    borderRadius={0}
                                     invertColors={!checked}
                                 />
                             </View>
-                        )
-                    }
-                }}
+                        )}
+                }}                   
             />
         )
     }
 }
 
-export default UserList
+export default UserSectionList
 
 const styles = StyleSheet.create({
     button: {
         width: 90,
+        height: 35,
     },
-
     checkPosition: {
         position: 'absolute',
         right: 10,
-        top: 17.5,
+        top: 17.5
     },
-
     buttonPosition: {
         position: 'absolute',
         right: 0,
-        top: 0,
-    },
+        top: 0
+    }
 })

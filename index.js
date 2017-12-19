@@ -26,6 +26,9 @@ export const StoryUserList = _StoryUserList
 import _UserList from './src/Lists/UserList'
 export const UserList = _UserList
 
+import _UserSectionList from './src/Lists/UserSectionList'
+export const UserSectionList = _UserSectionList
+
 import _UserListItem from './src/Lists/UserListItem'
 export const UserListItem = _UserListItem
 
