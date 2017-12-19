@@ -5,12 +5,17 @@ import { View, Text } from 'react-native'
 import ModalScreen from '../ModalScreen'
 import capitalize from '../UtilityMethods/capitalize'
 import styles, { triangleSize } from './styles'
-import type { TooltipProps } from './flowTypes'
 
-export default class Tooltip extends PureComponent<TooltipProps> {
-    static defaultProps = {
-        visible: true,
-    }
+export type Props = {|
+    description: string,
+    trianglePosition: 'top' | 'right' | 'bottom' | 'left' | 'none',
+    visible?: bool,
+    title?: string,
+    onClose?: () => void,
+|}
+
+export default class Tooltip extends PureComponent<Props> {
+    static defaultProps = { visible: true }
 
     render() {
         const {
@@ -18,23 +23,23 @@ export default class Tooltip extends PureComponent<TooltipProps> {
             title,
             description,
             trianglePosition,
-            style,
-            offset,
             onClose,
         } = this.props
 
         return (
             <ModalScreen
-                style={[styles.container].concat(style)}
+                style={styles.container}
                 touchingBackgroundShouldHide={true}
-                visible={visible}
+                visible={!!visible}
                 onRequestClose={onClose}>
-                <View style={[styles.innerContainer, trianglePosition === 'none' ? {} : {
-                    [`margin${capitalize(trianglePosition)}`]: Number(offset) + triangleSize,
-                }]}>
-                    <View style={[styles.triangle, styles[trianglePosition]]} />
-                    {!!title && <Text style={[styles.text, styles.title]}>{title}</Text>}
-                    <Text style={styles.text}>{description}</Text>
+                <View>
+                    <View style={[styles.innerContainer, trianglePosition === 'none' ? {} : {
+                        [`margin${capitalize(trianglePosition)}`]: triangleSize,
+                    }]}>
+                        <View style={[styles.triangle, styles[trianglePosition]]} />
+                        {!!title && <Text style={[styles.text, styles.title]}>{title}</Text>}
+                        <Text style={styles.text}>{description}</Text>
+                    </View>
                 </View>
             </ModalScreen>
         )

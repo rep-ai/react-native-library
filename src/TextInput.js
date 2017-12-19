@@ -245,6 +245,7 @@ class TextInputComponent extends Component {
             showRequiredError,
             color,
             style,
+            defaultValue,
         } = this.props
 
         return (
@@ -275,6 +276,7 @@ class TextInputComponent extends Component {
                 <Animated.View style={{ opacity: this.state.opacity }}>
                     <TextInput
                         underlineColorAndroid="transparent"
+                        defaultValue={defaultValue}
                         autoFocus={autoFocus}
                         spellCheck={spellCheck}
                         autoCorrect={autoCorrect}

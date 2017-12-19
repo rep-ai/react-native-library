@@ -1,6 +1,6 @@
 //@flow
 // NOTE: Using require here allows use of flow types such as React.ComponentType
-const React = require('react')
+import * as React from 'react'
 import { PureComponent } from 'react'
 import { FlatList } from 'react-native'
 import checkType from 'check-types'
@@ -8,7 +8,7 @@ import type { StyleObj } from 'react-native/Libraries/StyleSheet/StyleSheetTypes
 import type { ViewToken } from 'react-native/Libraries/Lists/ViewabilityHelper'
 
 export type FlatListProps<ItemT> = {
-    data: ?Array<ItemT>,
+    data: [] | ItemT[],
     renderItem: (info: {
         item: ItemT,
         index: number,
@@ -26,13 +26,13 @@ export type FlatListProps<ItemT> = {
     extraData?: any,
     getItemLayout?: (
         data: ?Array<ItemT>,
-        index: number,
-    ) => {length: number, offset: number, index: number},
+        index: number
+    ) => { length: number, offset: number, index: number },
     horizontal?: ?boolean,
     initialScrollIndex?: ?number,
     inverted?: ?boolean,
     numColumns?: number,
-    onEndReached?: ?(info: {distanceFromEnd: number}) => void,
+    onEndReached?: ?(info: { distanceFromEnd: number }) => void,
     onEndReachedThreshold?: number,
     onRefresh?: ?() => void,
     onViewableItemsChanged?: ?(info: {
@@ -55,12 +55,10 @@ export default class FlatListPureComponent<ItemT> extends PureComponent<FlatList
             }
 
             return index.toString()
-        }
+        },
     }
 
     render() {
-        return (
-            <FlatList {...this.props} />
-        )
+        return <FlatList {...this.props} />
     }
 }

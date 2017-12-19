@@ -1,51 +1,45 @@
 // @flow
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Image, View, ActivityIndicator } from 'react-native'
 
 import colors from './colors'
 import styles from './styles'
 
-class AvatarView extends Component {
+import type { StyleObj } from 'react-native/Libraries/StyleSheet/StyleSheetTypes'
+
+export type Props = {|
+    avatar?: { uri: string },
+    style?: StyleObj,
+    size?: number,
+    overlayColor?: string,
+|}
+
+export type State = {|
+    loading: boolean,
+    imageVisible: boolean,
+|}
+
+export default class AvatarView extends PureComponent<Props, State> {
     static defaultProps = {
         avatar: {},
         style: {},
         size: 50,
-        overlayColor: 'transparent'
-    }
-
-    props: {
-        avatar?: { uri?: string },
-        style?: any,
-        size: number,
-        overlayColor: string
+        overlayColor: 'transparent',
     }
 
     state = {
         loading: false,
         imageVisible: false,
-        avatar: this.props.avatar
-    }
-
-    state: {
-        loading: bool,
-        imageVisible: bool,
-    }
-
-    circleStyle: { width: number, height: number, borderRadius: number }
-    circleStyle = {
-        width: this.props.size,
-        height: this.props.size,
-        borderRadius: this.props.size / 2,
     }
 
     handleLoadStart = () => {
         if (this.props.avatar && this.props.avatar.uri && !this.state.loading) {
-            this.setState({ loading : true })
+            this.setState({ loading: true })
         }
     }
 
     handleLoadEnd = () => {
-        this.setState({ loading : false })
+        this.setState({ loading: false })
     }
 
     handleError = (e: Error) => {
@@ -53,33 +47,29 @@ class AvatarView extends Component {
     }
 
     render() {
-        const {
-            style,
-            overlayColor
-        } = this.props
+        const { style, overlayColor } = this.props
 
         const circleStyle = {
             width: this.props.size,
             height: this.props.size,
-            borderRadius: this.props.size / 2,
+            borderRadius: Number(this.props.size) / 2,
         }
 
         return (
-            <View style={[
-                circleStyle, {
-                    backgroundColor: colors.middleGrey
-                }
-            ].concat(style)}>
+            <View
+                style={[
+                    circleStyle,
+                    {
+                        backgroundColor: colors.middleGrey,
+                    },
+                ].concat(style)}
+            >
                 <Image
-                    style={[
-                        styles.absoluteFill,
-                        circleStyle,
-                        { overlayColor }
-                    ]}
+                    style={[styles.absoluteFill, circleStyle, { overlayColor }]}
                     source={
-                        (this.props.avatar && this.props.avatar.uri)
-                        ? this.props.avatar
-                        : require('./images/avatarPlaceholder.png')
+                        this.props.avatar && this.props.avatar.uri
+                            ? this.props.avatar
+                            : require('./images/avatarPlaceholder.png')
                     }
                     defaultSource={require('./images/avatarPlaceholder.png')}
                     resizeMode="cover"
@@ -89,9 +79,13 @@ class AvatarView extends Component {
                 />
                 {!!this.state.loading && (
                     <ActivityIndicator
-                        style={[styles.absoluteFill, circleStyle, {
-                            backgroundColor: colors.middleGrey,
-                        }]}
+                        style={[
+                            styles.absoluteFill,
+                            circleStyle,
+                            {
+                                backgroundColor: colors.middleGrey,
+                            },
+                        ]}
                         color="white"
                     />
                 )}
@@ -99,5 +93,3 @@ class AvatarView extends Component {
         )
     }
 }
-
-export default AvatarView
