@@ -1,38 +1,51 @@
 // @flow
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import { Image, View, ActivityIndicator } from 'react-native'
 
 import colors from './colors'
 import styles from './styles'
 
-import type { StyleObj } from 'react-native/Libraries/StyleSheet/StyleSheetTypes'
-
-export type Props = {|
-    avatar?: { uri: string },
-    style?: StyleObj,
-    size?: number,
-    overlayColor?: string,
-|}
-
-export type State = {|
-    loading: boolean,
-    imageVisible: boolean,
-|}
-
-export default class AvatarView extends PureComponent<Props, State> {
+class AvatarView extends Component {
     static defaultProps = {
+        avatar: {},
         style: {},
         size: 50,
         overlayColor: 'transparent',
     }
 
+    props: {
+        avatar?: { uri?: string },
+        style?: any,
+        size: number,
+        overlayColor: string,
+        loading: boolean,
+    }
+
     state = {
         loading: false,
         imageVisible: false,
+        avatar: this.props.avatar,
+    }
+
+    state: {
+        loading: boolean,
+        imageVisible: boolean,
+    }
+
+    circleStyle: { width: number, height: number, borderRadius: number }
+    circleStyle = {
+        width: this.props.size,
+        height: this.props.size,
+        borderRadius: this.props.size / 2,
     }
 
     handleLoadStart = () => {
-        if (this.props.avatar && this.props.avatar.uri && !this.state.loading) {
+        if (
+            this.props.avatar &&
+            this.props.avatar.uri &&
+            !this.state.loading &&
+            this.props.loading !== false
+        ) {
             this.setState({ loading: true })
         }
     }
@@ -51,7 +64,7 @@ export default class AvatarView extends PureComponent<Props, State> {
         const circleStyle = {
             width: this.props.size,
             height: this.props.size,
-            borderRadius: Number(this.props.size) / 2,
+            borderRadius: this.props.size / 2,
         }
 
         return (
@@ -76,7 +89,7 @@ export default class AvatarView extends PureComponent<Props, State> {
                     onLoadEnd={this.handleLoadEnd}
                     onError={this.handleError}
                 />
-                {!!this.state.loading && (
+                {(!!this.state.loading || !!this.props.loading) && (
                     <ActivityIndicator
                         style={[
                             styles.absoluteFill,
@@ -92,3 +105,5 @@ export default class AvatarView extends PureComponent<Props, State> {
         )
     }
 }
+
+export default AvatarView
