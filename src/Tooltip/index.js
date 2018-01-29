@@ -12,10 +12,11 @@ export type Props = {|
     visible?: bool,
     title?: string,
     onClose?: () => void,
+    offset?: number,
 |}
 
 export default class Tooltip extends PureComponent<Props> {
-    static defaultProps = { visible: true }
+    static defaultProps = { visible: true, offset: 0 }
 
     render() {
         const {
@@ -24,6 +25,7 @@ export default class Tooltip extends PureComponent<Props> {
             description,
             trianglePosition,
             onClose,
+            offset,
         } = this.props
 
         return (
@@ -32,7 +34,7 @@ export default class Tooltip extends PureComponent<Props> {
                 touchingBackgroundShouldHide={true}
                 visible={!!visible}
                 onRequestClose={onClose}>
-                <View>
+                <View style={{justifyContent: 'center', [`margin${capitalize(trianglePosition)}`]: offset}}>
                     <View style={[styles.innerContainer, trianglePosition === 'none' ? {} : {
                         [`margin${capitalize(trianglePosition)}`]: triangleSize,
                     }]}>
