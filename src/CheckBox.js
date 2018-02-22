@@ -21,9 +21,9 @@ class CheckBox extends PureComponent<CheckBoxProps> {
     static defaultProps = {
         checked: false,
         size: 44,
-        borderColor: 'black',
+        borderColor: colors.main,
         borderRadius: 22,
-        backgroundColor: colors.lightMain,
+        backgroundColor: colors.main,
         style: {}
     }
     

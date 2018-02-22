@@ -2,12 +2,14 @@
 const colors: {
     [key: string]: string
 } = {
-    main: '#4191D0',
+    main: '#5D86C4',
+    secondary: '#E459E7',
+    background: '#242527',
+    offWhite: '#EEF0F4',
+    lightGrey: '#AEB5C1',
     grey: '#444',
     text: '#666',
-    lightGrey: '#777',
     lightestGrey: '#eee',
-    lightMain: '#e5645e',
     blue: '#80BBFF',
     middleGrey: '#C7C7CC',
     middleLightGrey: '#D7D7DC',

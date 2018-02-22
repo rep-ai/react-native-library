@@ -22,8 +22,8 @@ class Button extends PureComponent {
             Math.round(Math.random() * (defaultTitles.length - 1))
         ],
         color: colors.main,
-        activeColor: 'white',
-        backgroundColor: 'white',
+        activeColor: colors.background,
+        backgroundColor: colors.background,
         activeBackgroundColor: colors.main,
         height: 55,
         borderWidth: 2,
