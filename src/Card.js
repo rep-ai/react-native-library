@@ -21,7 +21,7 @@ type State = {}
 export default class Card extends PureComponent<Props, State> {
     static defaultProps = {
         width: '100%',
-        backgroundColor: colors.background,
+        backgroundColor: colors.card,
         marginTop: 18,
         paddingTop: 16,
         paddingBottom: 9,

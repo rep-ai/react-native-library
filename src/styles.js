@@ -71,7 +71,7 @@ export const stylesObject = {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'white',
+        backgroundColor: colors.background,
     },
 
     ActivityIndicator: {
@@ -163,7 +163,7 @@ export const stylesObject = {
         justifyContent: 'flex-start',
         paddingHorizontal: 24,
         paddingVertical: 12,
-        backgroundColor: 'white',
+        backgroundColor: colors.background,
         borderRadius: 4,
         shadowColor: 'black',
         shadowOpacity: 0.075,

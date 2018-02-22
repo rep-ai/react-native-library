@@ -5,6 +5,7 @@ const colors: {
     main: '#5D86C4',
     secondary: '#E459E7',
     background: '#242527',
+    card: '#313234',
     offWhite: '#EEF0F4',
     text: '#EEF0F4', //same as offWhite
     grey: '#444',

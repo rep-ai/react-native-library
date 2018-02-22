@@ -61,8 +61,8 @@ export const isConnectedResolver = (
 export const elevationToShadowProps = (
     elevation: Elevation
 ) => ({
-    backgroundColor: colors.background,
-    shadowColor: colors.main,
+    backgroundColor: colors.card,
+    shadowColor: 'white',
     shadowOpacity: 0.0015 * elevation + 0.18,
     shadowRadius: 0.54 * elevation,
     shadowOffset: {
