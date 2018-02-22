@@ -4,6 +4,7 @@ import {
     StyleSheet
 } from 'react-native'
 import { elevationToShadowProps } from './util'
+import colors from './colors'
 
 type Props = {
     width?: string,
