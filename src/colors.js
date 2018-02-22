@@ -6,13 +6,13 @@ const colors: {
     secondary: '#E459E7',
     background: '#242527',
     offWhite: '#EEF0F4',
-    lightGrey: '#AEB5C1',
+    text: '#EEF0F4', //same as offWhite
     grey: '#444',
-    text: '#666',
-    lightestGrey: '#eee',
-    blue: '#80BBFF',
     middleGrey: '#C7C7CC',
     middleLightGrey: '#D7D7DC',
+    lightGrey: '#AEB5C1',
+    lightestGrey: '#eee',
+    blue: '#80BBFF',
     facebookBlue: '#415DAE'
 }
 
