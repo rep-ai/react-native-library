@@ -1,6 +1,7 @@
 // @flow
 import type { Elevation, Style } from './flowTypes'
 import { NetInfo } from 'react-native'
+import colors from '../colors'
 
 export const isConnectedResolver = (
     callback: () => any,
@@ -60,8 +61,8 @@ export const isConnectedResolver = (
 export const elevationToShadowProps = (
     elevation: Elevation
 ) => ({
-    backgroundColor: 'white',
-    shadowColor: 'black',
+    backgroundColor: colors.background,
+    shadowColor: colors.main,
     shadowOpacity: 0.0015 * elevation + 0.18,
     shadowRadius: 0.54 * elevation,
     shadowOffset: {
